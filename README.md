@@ -5,220 +5,85 @@ This is a PyTorch implementation of [W2SSL] for self-supervised Learning.
 
 ### Main Results
 
-The following results are based on ImageNet-1k self-supervised pre-training, followed by ImageNet-1k supervised training for linear evaluation.
+The following results are based on ImageNet-1k self-supervised pre-training, followed by ImageNet-1k supervised training for linear evaluation. **Epochs** and **BS** suggests the self-supervised training epochs and the batch size of the corresponding methods. In column Mode, the PT, CL, MT indicate traditional pretext task based method, contrastive learning based method, and multi-task based method. In column **Pub. and Year**, the content (*e.g.,* 0.5X) of our method is the corresponding amount of forward computation compared with others. 
 
-| \\makecell\[c\]\{Method\}                                                                                                                                                     | Pub\. \\                                                                                                                                                                                                                                                                                                              | Year   | \{Mode\} | \{Epochs\} | \{BS\}                    | \{Accuracy\{\\%\}\} |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|------------|---------------------------|---------------------|
-| Supervised                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                       | \{\-\} | \{\-\}   | \{\-\}     | \\makecell\[c\] \{77\.2\} |
-| Colorization                                                                                                                                                                  | ECCV2016                                                                                                                                                                                                                                                                                                              | \{PT\} | \{200\}  | \{256\}    | \{39\.6\}                 |
-| Jigpuz                                                                                                                                                                        | ECCV2016                                                                                                                                                                                                                                                                                                              | \{PT\} | \{\-\}   | \{256\}    | \{45\.7\}                 |
-| Rotation                                                                                                                                                                      | ICLR2018                                                                                                                                                                                                                                                                                                              | \{PT\} | \{200\}  | \{256\}    | \{48\.1\}                 |
-| MoCo                                                                                                                                                                          | CVPR2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{60\.6\}                 |
-| SimCLR                                                                                                                                                                        | ICML2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{61\.9\}                 |
-| SimCLR                                                                                                                                                                        | ICML2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{1024\}   | \{65\.3\}                 |
-| SimCLR                                                                                                                                                                        | ICML2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{800\}  | \{4096\}   | \{68\.9\}                 |
-| MoCo\-v2                                                                                                                                                                      | Arxiv2020                                                                                                                                                                                                                                                                                                             | \{CL\} | \{200\}  | \{256\}    | \{67\.5\}                 |
-| PCL                                                                                                                                                                           | ICLR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{61\.5\}                 |
-| PCL\-v2                                                                                                                                                                       | ICLR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{67\.6\}                 |
-| BYOL                                                                                                                                                                          | NIPs2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{4096\}   | \{70\.6\}                 |
-| SwAV                                                                                                                                                                          | NIPs2020                                                                                                                                                                                                                                                                                                              | \{CL\} | \{400\}  | \{256\}    | \{70\.1\}                 |
-| InstLoc                                                                                                                                                                       | CVPR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{61\.7\}                 |
-| DenseCL                                                                                                                                                                       | CVPR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{63\.6\}                 |
-| MaskCo                                                                                                                                                                        | ICCV2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{65\.1\}                 |
-| SCRL                                                                                                                                                                          | CVPR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{1000\} | \{256\}    | \{70\.3\}                 |
-| MoCo\-v3                                                                                                                                                                      | ICCV2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{68\.1\}                 |
-| MoCo\-v3                                                                                                                                                                      | ICCV2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{300\}  | \{4096\}   | \{\\underline\{72\.8\}\}  |
-| SimSiam                                                                                                                                                                       | CVPR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{70\.0\}                 |
-| BarlowTwins                                                                                                                                                                   | ICCV2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{65\.0\}                 |
-| BarlowTwins                                                                                                                                                                   | ICCV2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{300\}  | \{256\}    | \{70\.7\}                 |
-| InfoMin                                                                                                                                                                       | ICLR2021                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{70\.1\}                 |
-| RegionCL                                                                                                                                                                      | Arxiv2021                                                                                                                                                                                                                                                                                                             | \{CL\} | \{200\}  | \{256\}    | \{69\.4\}                 |
-| XMOCO                                                                                                                                                                         | TCSVT2022                                                                                                                                                                                                                                                                                                             | \{CL\} | \{200\}  | \{256\}    | \{65\.0\}                 |
-| BatchFormer                                                                                                                                                                   | CVPR2022                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{68\.4\}                 |
-| HCSC                                                                                                                                                                          | CVPR2022                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{69\.2\}                 |
-| CCrop                                                                                                                                                                         | CVPR2022                                                                                                                                                                                                                                                                                                              | \{CL\} | \{200\}  | \{256\}    | \{67\.8\}                 |
-| DUPR                                                                                                                                                                          | TPAMI2022                                                                                                                                                                                                                                                                                                             | \{CL\} | \{200\}  | \{256\}    | \{63\.6\}                 |
-| SAT                                                                                                                                                                           | TPAMI2022                                                                                                                                                                                                                                                                                                             | \{CL\} | \{200\}  | \{1024\}   | \{\\underline\{72\.8\}\}  |
-| Sela                                                                                                                                                                          | ICLR2020                                                                                                                                                                                                                                                                                                              | \{MT\} | \{200\}  | \{256\}    | \{61\.5\}                 |
-| DeepCluster                                                                                                                                                                   | ICCV2017                                                                                                                                                                                                                                                                                                              | \{MT\} | \{200\}  | \{256\}    | \{48\.4\}                 |
-| JigClu                                                                                                                                                                        | CVPR2021                                                                                                                                                                                                                                                                                                              | \{MT\} | \{200\}  | \{256\}    | \{66\.4\}                 |
-| GLNet                                                                                                                                                                         | TCSVT2022                                                                                                                                                                                                                                                                                                             | \{MT\} | \{200\}  | \{256\}    | \{70\.5\}                 |
-| LEWEL                                                                                                                                                                         | CVPR2022                                                                                                                                                                                                                                                                                                              | \{MT\} | \{200\}  | \{256\}    | \{68\.4\}                 |
-| \{$\\text\{W\}^2 \\text\{SSL\}$\}                                                                                                                                             | 0\.50$\\times$                                                                                                                                                                                                                                                                                                        | \{MT\} | \{200\}  | \{256\}    | \{70\.8\}                 |
-| \{$\\text\{W\}^2 \\text\{SSL\}$\}                                                                                                                                             | 0\.50$\\times$                                                                                                                                                                                                                                                                                                        | \{MT\} | \{200\}  | \{1024\}   | \{\\textbf\{72\.8\}\}     |
-| In column Mode, the PT, CL, MT indicate traditional pretext task based method, contrastive learning based method, and multi\-task based method\. In column \\textbf\{Pub\. \\ | Year\}, the content \(\\textit\{e\.g\.,\} 0\.5$\\times$\) of our method is the corresponding amount of forward computation compared with others\. \\textbf\{Black bold\} fonts indicates the best performance while the \\underline\{underline\} represents the second best results under each case in this paper\.\} |
+| Method       | Pub\. and Year | Mode | Epochs | BS   | Accuracy\(%\) |
+|--------------|----------------|------|--------|------|---------------|
+| Supervised   |                | \-   | \-     | \-   | 77\.2         |
+| Colorization | ECCV2016       | PT   | 200    | 256  | 39\.6         |
+| Jigpuz       | ECCV2016       | PT   | \-     | 256  | 45\.7         |
+| Rotation     | ICLR2018       | PT   | 200    | 256  | 48\.1         |
+| MoCo         | CVPR2020       | CL   | 200    | 256  | 60\.6         |
+| SimCLR       | ICML2020       | CL   | 200    | 256  | 61\.9         |
+| SimCLR       | ICML2020       | CL   | 200    | 1024 | 65\.3         |
+| SimCLR       | ICML2020       | CL   | 800    | 4096 | 68\.9         |
+| MoCo\-v2     | Arxiv2020      | CL   | 200    | 256  | 67\.5         |
+| PCL          | ICLR2021       | CL   | 200    | 256  | 61\.5         |
+| PCL\-v2      | ICLR2021       | CL   | 200    | 256  | 67\.6         |
+| BYOL         | NIPs2020       | CL   | 200    | 4096 | 70\.6         |
+| SwAV         | NIPs2020       | CL   | 400    | 256  | 70\.1         |
+| InstLoc      | CVPR2021       | CL   | 200    | 256  | 61\.7         |
+| DenseCL      | CVPR2021       | CL   | 200    | 256  | 63\.6         |
+| MaskCo       | ICCV2021       | CL   | 200    | 256  | 65\.1         |
+| SCRL         | CVPR2021       | CL   | 1000   | 256  | 70\.3         |
+| MoCo\-v3     | ICCV2021       | CL   | 200    | 256  | 68\.1         |
+| MoCo\-v3     | ICCV2021       | CL   | 300    | 4096 | 72\.8         |
+| SimSiam      | CVPR2021       | CL   | 200    | 256  | 70\.0         |
+| BarlowTwins  | ICCV2021       | CL   | 200    | 256  | 65\.0         |
+| BarlowTwins  | ICCV2021       | CL   | 300    | 256  | 70\.7         |
+| InfoMin      | ICLR2021       | CL   | 200    | 256  | 70\.1         |
+| RegionCL     | Arxiv2021      | CL   | 200    | 256  | 69\.4         |
+| XMOCO        | TCSVT2022      | CL   | 200    | 256  | 65\.0         |
+| BatchFormer  | CVPR2022       | CL   | 200    | 256  | 68\.4         |
+| HCSC         | CVPR2022       | CL   | 200    | 256  | 69\.2         |
+| CCrop        | CVPR2022       | CL   | 200    | 256  | 67\.8         |
+| DUPR         | TPAMI2022      | CL   | 200    | 256  | 63\.6         |
+| SAT          | TPAMI2022      | CL   | 200    | 1024 | 72\.8         |
+| Sela         | ICLR2020       | MT   | 200    | 256  | 61\.5         |
+| DeepCluster  | ICCV2017       | MT   | 200    | 256  | 48\.4         |
+| JigClu       | CVPR2021       | MT   | 200    | 256  | 66\.4         |
+| GLNet        | TCSVT2022      | MT   | 200    | 256  | 70\.5         |
+| LEWEL        | CVPR2022       | MT   | 200    | 256  | 68\.4         |
+| W^2SSL       | 0\.50X         | MT   | 200    | 256  | 70\.8         |
+| W^2SSL       | 0\.50X         | MT   | 200    | 1024 | 72\.8         |
 
 
-**Pre-trained models** and **configs** can be found at [CONFIG.md](https://github.com/facebookresearch/moco-v3/blob/main/CONFIG.md).
 
-#### ResNet-50, linear classification
-<table><tbody>
-<!-- START TABLE -->
-<!-- TABLE HEADER -->
-<th valign="center">pretrain<br/>epochs</th>
-<th valign="center">pretrain<br/>crops</th>
-<th valign="center">linear<br/>acc</th>
-<!-- TABLE BODY -->
-<tr>
-<td align="right">100</td>
-<td align="center">2x224</td>
-<td align="center">68.9</td>
-</tr>
-<tr>
-<td align="right">300</td>
-<td align="center">2x224</td>
-<td align="center">72.8</td>
-</tr>
-<tr>
-<td align="right">1000</td>
-<td align="center">2x224</td>
-<td align="center">74.6</td>
-</tr>
-</tbody></table>
+**Pre-trained models** and **configs** can be found at [README.md](https://github.com/WilyZhao8/W2SSL/blob/main/README.md).
 
-#### ViT, linear classification
-<table><tbody>
-<!-- START TABLE -->
-<!-- TABLE HEADER -->
-<th valign="center">model</th>
-<th valign="center">pretrain<br/>epochs</th>
-<th valign="center">pretrain<br/>crops</th>
-<th valign="center">linear<br/>acc</th>
-<!-- TABLE BODY -->
-<tr>
-<td align="left">ViT-Small</td>
-<td align="right">300</td>
-<td align="center">2x224</td>
-<td align="center">73.2</td>
-</tr>
-<tr>
-<td align="left">ViT-Base</td>
-<td align="right">300</td>
-<td align="center">2x224</td>
-<td align="center">76.7</td>
-</tr>
-</tbody></table>
-
-#### ViT, end-to-end fine-tuning
-<table><tbody>
-<!-- START TABLE -->
-<!-- TABLE HEADER -->
-<th valign="center">model</th>
-<th valign="center">pretrain<br/>epochs</th>
-<th valign="center">pretrain<br/>crops</th>
-<th valign="center">e2e<br/>acc</th>
-<!-- TABLE BODY -->
-<tr>
-<td align="left">ViT-Small</td>
-<td align="right">300</td>
-<td align="center">2x224</td>
-<td align="center">81.4</td>
-</tr>
-<tr>
-<td align="left">ViT-Base</td>
-<td align="right">300</td>
-<td align="center">2x224</td>
-<td align="center">83.2</td>
-</tr>
-</tbody></table>
-
-The end-to-end fine-tuning results are obtained using the [DeiT](https://github.com/facebookresearch/deit) repo, using all the default DeiT configs. ViT-B is fine-tuned for 150 epochs (vs DeiT-B's 300ep, which has 81.8% accuracy).
 
 ### Usage: Preparation
 
-Install PyTorch and download the ImageNet dataset following the [official PyTorch ImageNet training code](https://github.com/pytorch/examples/tree/master/imagenet). Similar to [MoCo v1/2](https://github.com/facebookresearch/moco), this repo contains minimal modifications on the official PyTorch ImageNet code. We assume the user can successfully run the official PyTorch ImageNet code.
-For ViT models, install [timm](https://github.com/rwightman/pytorch-image-models) (`timm==0.4.9`).
+Install PyTorch and download the ImageNet dataset following the [official PyTorch ImageNet training code](https://github.com/pytorch/examples/tree/master/imagenet). Similar to [MoCo v3](https://github.com/facebookresearch/moco-v3), this repo contains minimal modifications on the official PyTorch ImageNet code. 
 
-The code has been tested with CUDA 10.2/CuDNN 7.6.5, PyTorch 1.9.0 and timm 0.4.9.
+The code has been tested with CUDA 11.3, PyTorch 1.9.0 and timm 0.4.9.
 
 ### Usage: Self-supervised Pre-Training
 
-Below are three examples for MoCo v3 pre-training. 
-
-#### ResNet-50 with 2-node (16-GPU) training, batch 4096
-
-On the first node, run:
+#### ResNet-50 with 1-node (4-GPU) training, batch 256
+run:
 ```
-python main_moco.py \
-  --moco-m-cos --crop-min=.2 \
-  --dist-url 'tcp://[your first node address]:[specified port]' \
-  --multiprocessing-distributed --world-size 2 --rank 0 \
-  [your imagenet-folder with train and val folders]
-```
-On the second node, run the same command with `--rank 1`.
-With a batch size of 4096, the training can fit into 2 nodes with a total of 16 Volta 32G GPUs. 
-
-
-#### ViT-Small with 1-node (8-GPU) training, batch 1024
-
-```
-python main_moco.py \
-  -a vit_small -b 1024 \
-  --optimizer=adamw --lr=1.5e-4 --weight-decay=.1 \
-  --epochs=300 --warmup-epochs=40 \
-  --stop-grad-conv1 --moco-m-cos --moco-t=.2 \
-  --dist-url 'tcp://localhost:10001' \
-  --multiprocessing-distributed --world-size 1 --rank 0 \
-  [your imagenet-folder with train and val folders]
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main_moco.py --moco-m-cos --crop-min=.2 --dist-url 'tcp://localhost:10109' --multiprocessing-distributed --world-size 1 --rank 0 --print-freq 1000 --batch-size 512 --epochs 200 --loss_crop 1.0 [your imagenet-folder with train and val folders]
 ```
 
-#### ViT-Base with 8-node training, batch 4096
-
-With a batch size of 4096, ViT-Base is trained with 8 nodes:
+#### ResNet-50 with 1-node (8-GPU) training, batch 1024
+run:
 ```
-python main_moco.py \
-  -a vit_base \
-  --optimizer=adamw --lr=1.5e-4 --weight-decay=.1 \
-  --epochs=300 --warmup-epochs=40 \
-  --stop-grad-conv1 --moco-m-cos --moco-t=.2 \
-  --dist-url 'tcp://[your first node address]:[specified port]' \
-  --multiprocessing-distributed --world-size 8 --rank 0 \
-  [your imagenet-folder with train and val folders]
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python main_moco.py --moco-m-cos --crop-min=.2 --dist-url 'tcp://localhost:10109' --multiprocessing-distributed --world-size 1 --rank 0 --print-freq 1000 --batch-size 2048 --epochs 200 --loss_crop 1.0 [your imagenet-folder with train and val folders]
 ```
-On other nodes, run the same command with `--rank 1`, ..., `--rank 7` respectively.
 
 #### Notes:
-1. The batch size specified by `-b` is the total batch size across all GPUs.
-1. The learning rate specified by `--lr` is the *base* lr, and is adjusted by the [linear lr scaling rule](https://arxiv.org/abs/1706.02677) in [this line](https://github.com/facebookresearch/moco-v3/blob/main/main_moco.py#L213).
-1. Using a smaller batch size has a more stable result (see paper), but has lower speed. Using a large batch size is critical for good speed in TPUs (as we did in the paper).
-1. In this repo, only *multi-gpu*, *DistributedDataParallel* training is supported; single-gpu or DataParallel training is not supported. This code is improved to better suit the *multi-node* setting, and by default uses automatic *mixed-precision* for pre-training.
+1. The batch size specified by `-b` is the total batch size across all GPUs, and --batch-size divided by 2 is the number of synthetic samples input to the model.
+2. The learning rate specified by `--lr` is the *base* lr, and is adjusted by the [linear lr scaling rule](https://arxiv.org/abs/1706.02677) in [this line](https://github.com/facebookresearch/moco-v3/blob/main/main_moco.py#L213).
+3. In this repo, only *multi-gpu*, *DistributedDataParallel* training is supported; single-gpu or DataParallel training is not supported. This code is improved to better suit the *multi-node* setting, and by default uses automatic *mixed-precision* for pre-training.
 
 ### Usage: Linear Classification
 
-By default, we use momentum-SGD and a batch size of 1024 for linear classification on frozen features/weights. This can be done with a single 8-GPU node.
+By default, we use momentum-SGD and a batch size of 256 for linear classification on frozen features/weights. This can be done with a single 8-GPU node.
 
 ```
-python main_lincls.py \
-  -a [architecture] --lr [learning rate] \
-  --dist-url 'tcp://localhost:10001' \
-  --multiprocessing-distributed --world-size 1 --rank 0 \
-  --pretrained [your checkpoint path]/[your checkpoint file].pth.tar \
-  [your imagenet-folder with train and val folders]
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7  python main_lincls.py -a resnet50 --batch-size 256 --epochs 100  --dist-url 'tcp://localhost:10016'--multiprocessing-distributed --world-size 1 --rank 0 --print-freq 100 --pretrained checkpoint_0199.pth.tar [your imagenet-folder with train and val folders]
 ```
-
-### Usage: End-to-End Fine-tuning ViT
-
-To perform end-to-end fine-tuning for ViT, use our script to convert the pre-trained ViT checkpoint to [DEiT](https://github.com/facebookresearch/deit) format:
-```
-python convert_to_deit.py \
-  --input [your checkpoint path]/[your checkpoint file].pth.tar \
-  --output [target checkpoint file].pth
-```
-Then run the training (in the DeiT repo) with the converted checkpoint:
-```
-python $DEIT_DIR/main.py \
-  --resume [target checkpoint file].pth \
-  --epochs 150
-```
-This gives us 83.2% accuracy for ViT-Base with 150-epoch fine-tuning.
-
-**Note**:
-1. We use `--resume` rather than `--finetune` in the DeiT repo, as its `--finetune` option trains under eval mode. When loading the pre-trained model, revise `model_without_ddp.load_state_dict(checkpoint['model'])` with `strict=False`.
-1. Our ViT-Small is with `heads=12` in the Transformer block, while by default in DeiT it is `heads=6`. Please modify the DeiT code accordingly when fine-tuning our ViT-Small model. 
-
-### Model Configs
-
-See the commands listed in [CONFIG.md](https://github.com/facebookresearch/moco-v3/blob/main/CONFIG.md) for specific model configs, including our recommended hyper-parameters and pre-trained reference models.
 
 ### Transfer Learning
 
@@ -230,10 +95,10 @@ This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for detai
 
 ### Citation
 ```
-@Article{chen2021mocov3,
-  author  = {Xinlei Chen* and Saining Xie* and Kaiming He},
-  title   = {An Empirical Study of Training Self-Supervised Vision Transformers},
-  journal = {arXiv preprint arXiv:2104.02057},
-  year    = {2021},
+@Article{zhao2023w2ssl,
+  author  = {Wenyi Zhao and Weidong Zhang and Wenhe Jia and Xipeng Pan and Huihua Yang*},
+  title   = {Learning What and Where to Learn: A New Perspective on Self-supervised Learning},
+  journal = {Submission status in IJCAI2023},
+  year    = {2023},
 }
 ```
