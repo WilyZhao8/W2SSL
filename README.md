@@ -87,7 +87,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7  python main_lincls.py -a resnet50 --batch-
 
 ### Transfer Learning
 
-See the instructions in the [transfer](https://github.com/facebookresearch/moco-v3/tree/main/transfer) dir.
+See the instructions in the [transfer](https://github.com/WilyZhao8/W2SSL/tree/main/ab_study_det) dir.
 
 ### License
 
