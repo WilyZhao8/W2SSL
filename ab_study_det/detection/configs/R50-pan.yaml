@@ -1,0 +1,5 @@
+_BASE_: "Base-Panoptic-FPN.yaml"
+MODEL:
+  WEIGHTS: "detection/jigclu_det.pth"
+  RESNETS:
+    DEPTH: 50

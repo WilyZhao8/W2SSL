@@ -1,0 +1,6 @@
+_BASE_: "Base-Keypoint-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "detection/jigclu_det.pth"
+  RESNETS:
+    DEPTH: 50
+
