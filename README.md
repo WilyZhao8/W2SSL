@@ -87,7 +87,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7  python main_lincls.py -a resnet50 --batch-
 
 ### Transfer Learning
 
-See the instructions in the [transfer](https://github.com/WilyZhao8/W2SSL/tree/main/ab_study_det) dir.
+See the instructions in the [transfer](https://github.com/WilyZhao8/W2SSL/tree/main/ab_study_det) dir. We provider the self-supervised [pre-trained model](https://drive.google.com/file/d/13UvDPaRiJtrt9pQWV0lMSI5QVSKWyI2s/view?usp=sharing) with batch size 256 and epoch 200.
 
 ### License
 
@@ -100,5 +100,13 @@ This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for detai
   title   = {Learning What and Where to Learn: A New Perspective on Self-supervised Learning},
   journal = {Submission status in IJCAI2023},
   year    = {2023},
+}
+```
+```
+@Article{chen2021mocov3,
+  author  = {Xinlei Chen* and Saining Xie* and Kaiming He},
+  title   = {An Empirical Study of Training Self-Supervised Vision Transformers},
+  journal = {arXiv preprint arXiv:2104.02057},
+  year    = {2021},
 }
 ```
