@@ -96,9 +96,9 @@ This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for detai
 ### Citation
 ```
 @Article{zhao2023w2ssl,
-  author  = {Wenyi Zhao and Weidong Zhang and Wenhe Jia and Xipeng Pan and Huihua Yang*},
+  author  = {Wenyi Zhao, Weidong Zhang, Yongqin Tian, Wenhe Jia, Huihua Yang, Xipeng Pan, Mu Yang, Chongyi Li},
   title   = {Learning What and Where to Learn: A New Perspective on Self-supervised Learning},
-  journal = {Submission status in IJCAI2023},
+  journal = {Under Review},
   year    = {2023},
 }
 ```
